@@ -35,11 +35,13 @@ jobs:
       - name: Run Playwright script
         run: python test_playwright.py
 
-      - name: Save scraped data
+      - name: Save scraped results
         uses: actions/upload-artifact@v4
         with:
-          name: scraped-data
-          path: output.csv
+          name: scraped-results
+          path: |
+            output.csv
+            screenshot.png
 
 
 
