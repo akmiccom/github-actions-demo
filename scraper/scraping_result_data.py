@@ -12,7 +12,7 @@ from scraping_date_page import extract_model_url
 from scraping_model_page import extract_model_data
 
 
-def extract_results(hall_url: str, period: int = 1):
+def extract_result_data(hall_url: str, period: int = 1):
     """
     ホールurlリストと日付urlリストを受けて、そのホールの対象日・対象機種の全データを返す
     """
@@ -44,14 +44,16 @@ def extract_results(hall_url: str, period: int = 1):
         finally:
             browser.close()
             df_csv = pd.concat(df_frames, ignore_index=True)
-            df_csv.to_csv(config.CSV_DIR / f"{pref}_{hall}_results.csv", index=False)
+            df_csv.to_csv(config.CSV_DIR / f"{pref}_{hall}_result_data.csv", index=False)
+
+        return df_csv
 
 
 if __name__ == "__main__":
 
-    period = 3
+    period = 2
     hall_name = "大山オーシャン"
     hall_name = "やすだ東池袋9号店"
     hall_url = urljoin(config.MAIN_URL, quote(hall_name))
 
-    extract_results(hall_url, period)
+    extract_result_data(hall_url, period)
