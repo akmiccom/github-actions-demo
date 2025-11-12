@@ -95,10 +95,10 @@ def extract_model_data(
 
 if __name__ == "__main__":
 
-    NUMBER_OF_URL_ATTEMPTS = 2
+    period = 3
 
-    hall_name = "やすだ東池袋9号店"
     hall_name = "大山オーシャン"
+    hall_name = "やすだ東池袋9号店"
     hall_url = urljoin(config.MAIN_URL, quote(hall_name))
 
     df_frames: list = []
@@ -106,12 +106,12 @@ if __name__ == "__main__":
         browser = p.chromium.launch(headless=True)
         page = browser.new_page()
 
-        date_urls = extract_date_url(hall_url, page, period=3)
+        date_urls = extract_date_url(hall_url, page, period=period)
 
         try:
             df_model_urls: list = []
             columns = ["pref", "hall", "date", "date_url", "model_url"]
-            for pref, hall, date, date_url in date_urls[:NUMBER_OF_URL_ATTEMPTS]:
+            for pref, hall, date, date_url in date_urls:
                 model_urls = extract_model_url(page, hall, pref, date_url, date)
                 if not model_urls:
                     continue
