@@ -77,7 +77,7 @@ def extract_date_url(hall_url, page, period) -> list[tuple[str, str, str, str]]:
 
     columns = ["pref", "hall", "date", "date_url"]
     df = pd.DataFrame(date_urls, columns=columns)
-    df.to_csv(config.CSV_DIR / f"{hall}_date_urls.csv", index=False)
+    df.to_csv(config.CSV_DIR / f"{pref}_{hall}_date_urls.csv", index=False)
 
     return date_urls
 

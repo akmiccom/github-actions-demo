@@ -75,11 +75,11 @@ if __name__ == "__main__":
 
         date_urls = extract_date_url(hall_url, page, period=3)
 
-        df_concat: list = []
+        df_model_urls: list = []
         columns = ["pref", "hall", "date", "date_url", "model_url"]
         for pref, hall, date, date_url in date_urls:
             model_urls = extract_model_url(page, hall, pref, date_url, date)
-            df_tmp = pd.DataFrame(model_urls, columns=columns)
-            df_concat.append(df_tmp)
-        df = pd.concat(df_concat)
-        df.to_csv(config.CSV_DIR / f"{hall}_model_urls.csv", index=False)
+            df_model_url = pd.DataFrame(model_urls, columns=columns)
+            df_model_urls.append(df_model_url)
+        df_csv = pd.concat(df_model_urls)
+        df_csv.to_csv(config.CSV_DIR / f"{pref}_{hall}_model_urls.csv", index=False)
