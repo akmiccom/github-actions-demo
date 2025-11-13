@@ -5,9 +5,9 @@ import re
 import datetime as dt
 import os
 
-import config
-from utils import _norm_text
-from logger_setup import setup_logger
+from config import config
+from utils.utils import _norm_text
+from utils.logger_setup import setup_logger
 
 # =========================
 # ロガー
