@@ -8,6 +8,8 @@ import yaml
 import config
 from logger_setup import setup_logger
 from scraping_result_data import extract_result_data
+from preprocess_for_db import df_data_clean
+import data_to_supabase
 
 # =========================
 # 設定・ロガー
@@ -66,8 +68,14 @@ def scraper_all_hall(test_mode=False) -> pd.DataFrame:
 if __name__ == "__main__":
 
     df = scraper_all_hall(test_mode=False)
-    # df = df_data_clean(df)
 
+    df = df_data_clean(df)
+
+    supabase = data_to_supabase.get_supabase_client()
+    data_to_supabase.add_model(df, supabase)
+    data_to_supabase.add_prefecture_and_hall(df, supabase)
+    data_to_supabase.add_data_result(df, supabase)
+    
     # conn = sqlite3.connect(config.DB_PATH)
     # # cursor = conn.cursor()
 
@@ -77,3 +85,4 @@ if __name__ == "__main__":
 
     # # conn.commit()
     # # conn.close()
+

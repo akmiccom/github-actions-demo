@@ -15,7 +15,8 @@ logger = setup_logger(filename, log_file=config.LOG_PATH)
 # データベースへの前処理
 # =========================
 def df_data_clean(df):
-    ALIAS_MAP = {
+
+    MODELS_ALIAS_MAP = {
         "SミスタージャグラーKK": "ミスタージャグラー",
         "S ミスタージャグラー KK": "ミスタージャグラー",
         "SアイムジャグラーEX": "アイムジャグラーEX-TP",
@@ -41,13 +42,13 @@ def df_data_clean(df):
     logger.info("データの前処理を行います。")
 
     df = df.rename(columns=COULMNS_RENAME_MAP)
-    df["model"] = df["model"].replace(ALIAS_MAP)
+    df["model"] = df["model"].replace(MODELS_ALIAS_MAP)
     df["game"] = df["game"].str.replace(",", "").astype(int)
     df["medal"] = df["medal"].str.replace(",", "").astype(int)
 
     df.to_csv(config.CSV_DIR / "cleaned_all_result_data.csv", index=False)
     logger.debug(df.info())
-    logger.info("データのを出力しました。")
+    logger.info("データを出力しました。")
     
     return df
 
