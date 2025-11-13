@@ -5,11 +5,11 @@ import time
 import os
 import yaml
 
-import config
-from logger_setup import setup_logger
-from scraping_result_data import extract_result_data
-from preprocess_for_db import df_data_clean
-import data_to_supabase
+from config import config
+from utils.logger_setup import setup_logger
+from scraper.scraping_result_data import extract_result_data
+from scraper.preprocess_for_db import df_data_clean
+from scraper import data_to_supabase
 
 # =========================
 # 設定・ロガー
@@ -24,6 +24,7 @@ logger = setup_logger(filename, log_file=config.LOG_PATH)
 def scraper_all_hall(test_mode=False) -> pd.DataFrame:
     start = time.perf_counter()
 
+
     # yaml  読み込み
     if not os.path.exists(config.HALLS_YAML):
         raise FileNotFoundError(f"YAMLが見つかりません: {config.HALLS_YAML}")
@@ -36,6 +37,7 @@ def scraper_all_hall(test_mode=False) -> pd.DataFrame:
 
     if test_mode:
         hall_list = hall_list[:2]
+        logger.info("***********現在はテストモードで実行しています。**********")
 
     frames: list = []
     for i, h in enumerate(hall_list, start=1):

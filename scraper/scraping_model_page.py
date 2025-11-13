@@ -4,11 +4,11 @@ import pandas as pd
 from urllib.parse import quote, urljoin
 import os
 
-import config
-from logger_setup import setup_logger
-from utils import _norm_text, extract_model_name
-from scraping_hall_page import extract_date_url
-from scraping_date_page import extract_model_url
+from config import config
+from utils.logger_setup import setup_logger
+from utils.utils import _norm_text, extract_model_name
+from scraper.scraping_hall_page import extract_date_url
+from scraper.scraping_date_page import extract_model_url
 
 # =========================
 # 設定・ロガー
@@ -103,7 +103,7 @@ def extract_model_data(
 
 if __name__ == "__main__":
 
-    period = 3
+    period = 1
 
     hall_name = "大山オーシャン"
     hall_name = "やすだ東池袋9号店"

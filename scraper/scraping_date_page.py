@@ -4,10 +4,10 @@ import pandas as pd
 from urllib.parse import quote, urljoin
 import os
 
-import config
-from logger_setup import setup_logger
-from utils import _norm_text
-from scraping_hall_page import extract_date_url
+from config import config
+from utils.logger_setup import setup_logger
+from utils.utils import _norm_text
+from scraper.scraping_hall_page import extract_date_url
 
 # =========================
 # 設定・ロガー

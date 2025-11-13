@@ -2,8 +2,8 @@ import os
 import pandas as pd
 from supabase import create_client, Client
 
-import config
-from logger_setup import setup_logger
+from config import config
+from utils.logger_setup import setup_logger
 
 
 # =========================

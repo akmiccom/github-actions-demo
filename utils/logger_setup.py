@@ -3,7 +3,7 @@
 # ============================
 import logging
 from colorlog import ColoredFormatter
-from config import LOG_PATH
+from config.config import LOG_PATH
 
 
 def setup_logger(name="scraper", log_file=None, level=logging.DEBUG):
