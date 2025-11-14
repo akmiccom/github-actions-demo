@@ -34,3 +34,28 @@ def make_style_val(threshold=1.02):
             return "background-color: #999999; color: white; font-weight: bold;"
         return ""
     return style_val
+
+
+HALLS = [
+    "EXA FIRST",
+    "コンサートホールエフ成増",
+    "楽園大山店",
+    "大山オーシャン",
+    "楽園池袋店",
+    "楽園池袋店グリーンサイド",
+    "マルハン大山店",
+    "マルハン池袋店",
+    "マルハン青梅新町店",
+    "スーパースロットサンフラワー⁺",
+    "YASUDA9",
+]
+
+WEEKDAY_MAP = {
+    0: "月",
+    1: "火",
+    2: "水",
+    3: "木",
+    4: "金",
+    5: "土",
+    6: "日",
+}

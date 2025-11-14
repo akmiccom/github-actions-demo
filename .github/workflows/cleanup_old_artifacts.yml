@@ -1,0 +1,14 @@
+name: Cleanup old artifacts
+on:
+  workflow_dispatch:  # 手動実行
+  # schedule:
+  #   - cron: "0 3 * * *"  # 毎日03:00 JST
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete artifacts older than 30 days
+        uses: geekyeggo/delete-artifact@v4
+        with:
+          age: 30
