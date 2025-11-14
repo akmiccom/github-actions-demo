@@ -1,9 +1,15 @@
 name: slot_data_analysis
 
+# 自動実行のタイミングを指定
 on:
-  workflow_dispatch:   # 手動実行可能
-  # push:
-  #   branches: [ main ] # mainブランチにpushされたら実行
+  schedule:
+    # 毎朝 6:00 JST（= 前日 21:00 UTC）
+    - cron: "0 21 * * *"
+    # 毎朝 9:30 JST（= 当日 0:30 UTC）
+    - cron: "30 0 * * *"
+
+  # 手動実行
+  workflow_dispatch:
 
 env:
   SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
