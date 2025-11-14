@@ -136,7 +136,7 @@ def make_df_latest(past_n_days=3):
 df_latest = make_df_latest()
 
 # 日付カラム
-start_date, end_date = begin_of_month_to_end_of_month(months=3, days=1)
+start_date, end_date = begin_of_month_to_end_of_month(months=1, days=1)
 ss = st.session_state
 ss.setdefault("start_date", start_date)
 ss.setdefault("end_date", end_date)
@@ -170,7 +170,7 @@ safe_index = df.index.intersection(df_latest.index)
 df = df.loc[safe_index].reset_index()
 
 df = pre_process_first(df, is_win=1.03)
-df["date"] = pd.to_datetime(df["date"]).dt.strftime("%m-%d %a")
+df["date"] = pd.to_datetime(df["date"]).dt.strftime("%m-%d-%a")
 group_targets = ["hall", "model", "unit_no", "day_last"]
 df_groupe = pre_process_groupe(df, group_targets)
 
