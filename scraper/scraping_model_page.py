@@ -38,12 +38,12 @@ def extract_model_data(
         page.reload()  # これは必ず入れる!!!
 
         # スクリーンショット
-        page.screenshot(
-            path=config.IMG_DIR / f"{hall}_model_page.jpg",
-            full_page=True,
-            type="jpeg",
-            quality=50,
-        )
+        # page.screenshot(
+        #     path=config.IMG_DIR / f"{hall}_model_page.jpg",
+        #     full_page=True,
+        #     type="jpeg",
+        #     quality=50,
+        # )
 
         # 機種名 (h2 に "ジャグラー" を含むものを優先)
         model = ""

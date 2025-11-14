@@ -35,12 +35,12 @@ def extract_date_url(hall_url, page, period) -> list[tuple[str, str, str, str]]:
     logger.info("Hall: %s / Pref: %s", hall, pref)
 
     # スクリーンショット
-    page.screenshot(
-        path=config.IMG_DIR / f"{hall}_hall_page.jpg",
-        full_page=True,
-        type="jpeg",
-        quality=50,
-    )
+    # page.screenshot(
+    #     path=config.IMG_DIR / f"{hall}_hall_page.jpg",
+    #     full_page=True,
+    #     type="jpeg",
+    #     quality=50,
+    # )
 
     # 日付リンク
     css = "#content div table tbody tr td a"

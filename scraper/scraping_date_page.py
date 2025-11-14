@@ -31,12 +31,12 @@ def extract_model_url(
     page.goto(date_url, timeout=90_000, wait_until="domcontentloaded")
 
     # スクリーンショット
-    page.screenshot(
-        path=config.IMG_DIR / f"{hall}_date_page.jpg",
-        full_page=True,
-        type="jpeg",
-        quality=50,
-    )
+    # page.screenshot(
+    #     path=config.IMG_DIR / f"{hall}_date_page.jpg",
+    #     full_page=True,
+    #     type="jpeg",
+    #     quality=50,
+    # )
 
     title = _norm_text(page.locator("h1").first.text_content())
     logger.info("Page title: %s", title)
